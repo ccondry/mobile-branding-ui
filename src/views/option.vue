@@ -148,7 +148,7 @@ export default {
         await this.uploadPhoto(this.rawFile)
         await this.uploadAnswers(this.answersData)
         // call
-        window.location = 'tel:' + encodeURIComponent(this.sessionInfo.dids.DID6)
+        window.location = 'tel:' + encodeURIComponent(this.sessionInfo.dids.DID8)
       } catch (e) {
         this.$buefy.toast.open({
           message: 'failed to send your data: ' + e.message
