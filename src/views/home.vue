@@ -73,6 +73,8 @@ section.main {
   align-items: center;
   /* // put content in a column down the page */
   flex-direction: column;
+  /* enable full screen access on mobile */
+  overflow: scroll;
 }
 
 #background {
