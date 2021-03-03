@@ -1,13 +1,24 @@
 <template>
   <div class="modal-card" style="width: auto">
     <section class="modal-card-body">
+      <!-- username -->
+      <b-field label="Your Name">
+        <b-input
+        v-model="model.username"
+        placeholder=""
+        required
+        :autofocus="model.username.length <= 2"
+        @keyup.enter.native="submit"
+        />
+      </b-field>
+
       <!-- phone number -->
       <b-field label="Phone Number">
         <b-input
         v-model="model.phone"
         placeholder=""
         required
-        :autofocus="model.phone.length <= 4"
+        :autofocus="model.username.length > 2 && model.phone.length <= 4"
         @keyup.enter.native="submit"
         />
       </b-field>
@@ -96,6 +107,10 @@ export default {
     phone: {
       type: String,
       required: true
+    },
+    username: {
+      type: String,
+      required: true
     }
   },
 
@@ -106,7 +121,8 @@ export default {
         datacenter: '',
         sessionId: '',
         userId: '',
-        phone: ''
+        phone: '',
+        username: ''
       }
     }
   },
@@ -119,7 +135,8 @@ export default {
       return this.model.datacenter.length === 3 &&
       this.model.sessionId.length > 0 &&
       this.model.userId.length === 4 &&
-      this.model.phone.length >= 4
+      this.model.phone.length >= 4 &&
+      this.model.username.length > 2
     }
   },
 
@@ -135,6 +152,9 @@ export default {
       this.refresh()
     },
     phone () {
+      this.refresh()
+    },
+    username () {
       this.refresh()
     }
   },
@@ -157,7 +177,8 @@ export default {
         datacenter: this.datacenter || '',
         sessionId: this.sessionId || '',
         userId: this.userId || '',
-        phone: this.phone || ''
+        phone: this.phone || '',
+        username: this.username || ''
       }
     }
   }

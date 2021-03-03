@@ -96,7 +96,6 @@ export default {
   /* cursor: pointer; */
   width: 100%;
   height: 100%;
-  color: white;
 }
 
 #content {
@@ -109,6 +108,7 @@ export default {
   height: 100%;
   /* align-content: space-between; */
   margin-top: -2rem;
+  color: white;
 }
 
 .content-item {

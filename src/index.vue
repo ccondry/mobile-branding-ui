@@ -35,6 +35,7 @@ export default {
       'sessionId',
       'userId',
       'phone',
+      'username',
       'verticalConfig',
       'hasSessionInput'
     ])
@@ -76,6 +77,7 @@ export default {
     this.setDatacenter(queryParams.datacenter)
     this.setUserId(queryParams.userId)
     this.setPhone(queryParams.phone)
+    this.setUsername(queryParams.username)
     // get dcloud session info
     if (this.hasSessionInput) {
       this.getSessionInfo()
@@ -91,7 +93,8 @@ export default {
             datacenter: this.datacenter,
             sessionId: this.sessionId,
             userId: this.userId,
-            phone: this.phone
+            phone: this.phone,
+            username: this.username
           },
           events: {
             submit: (data) => {
@@ -99,6 +102,7 @@ export default {
               this.setDatacenter(data.datacenter)
               this.setUserId(data.userId)
               this.setPhone(data.phone)
+              this.setUsername(data.username)
               this.getSessionInfo()
             }
           }
@@ -113,7 +117,8 @@ export default {
       'setDatacenter',
       'setUserId',
       'getSessionInfo',
-      'setPhone'
+      'setPhone',
+      'setUsername'
     ])
   }
 }

@@ -14,7 +14,7 @@
     :show-week-number="false"
     locale="en-US"
     placeholder="Click to select..."
-    icon="calendar-today"
+    icon="calendar"
     trap-focus
     :date-formatter="dateFormatter"
     />
@@ -94,3 +94,10 @@ export default {
   }
 }
 </script>
+
+<style>
+/* make the calendar icon more visible in the datepicker */
+.datepicker .control.has-icons-left .icon {
+  color: initial !important;
+}
+</style>

@@ -2,7 +2,7 @@ import {ToastProgrammatic as Toast} from 'buefy/src'
 import {addUrlQueryParams} from '../../utils'
 
 const actions = {
-  async fetch ({commit, getters, dispatch}, {
+  async fetch ({commit, dispatch}, {
     group,
     type,
     url,
@@ -22,17 +22,15 @@ const actions = {
       // const data = await dispatch('fetch', {url, options})
       // set default headers
       options.headers = options.headers || {}
-      // set content type to JSON by default
-      options.headers['Content-Type'] = options.headers['Content-Type'] || 'application/json'
-      // set accept to JSON by default
-      options.headers['Accept'] = options.headers['Accept'] || 'application/json'
-      // set JWT auth header by default
-      options.headers['Authorization'] = options.headers['Authorization'] || 'Bearer ' + getters.jwt
-      // set instant demo instance name
-      // options.headers['Instance'] = getters.instanceName
-      // stringify body if it is an object
-      if (typeof options.body === 'object') {
-        options.body = JSON.stringify(options.body)
+      if (!(options.body instanceof FormData)) {
+        // set content type to JSON by default
+        options.headers['Content-Type'] = options.headers['Content-Type'] || 'application/json'
+        // set accept to JSON by default
+        options.headers['Accept'] = options.headers['Accept'] || 'application/json'
+        // stringify body if it is an object
+        if (typeof options.body === 'object') {
+          options.body = JSON.stringify(options.body)
+        }
       }
       // add query parameters to URL
       const endpoint = addUrlQueryParams(url, options.query)
@@ -73,10 +71,6 @@ const actions = {
           }
           return text
         }
-      } else if (response.status === 401) {
-        // expired JWT. forget jwt and forward to SSO login
-        window.localStorage.removeItem('jwt')
-        return dispatch('login')
       } else {
         // not OK and not 401
         let m = text

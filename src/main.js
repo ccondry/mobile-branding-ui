@@ -21,7 +21,9 @@ import Buefy from 'buefy/src'
 // } from 'buefy'
 
 // add Buefy to Vue
-Vue.use(Buefy)
+Vue.use(Buefy, {
+  defaultIconPack: 'fa'
+})
 
 // add specific Buefy components to Vue
 // Vue.use(Table)

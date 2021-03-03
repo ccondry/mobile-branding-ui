@@ -1,9 +1,11 @@
 import * as types from '../mutation-types'
 import { Toast } from 'buefy/dist/components/toast'
 import Vue from 'vue'
+import router from '../../router'
 import { setUrlQueryParameter } from '../../utils'
 
 const state = {
+  username: '',
   sessionId: '',
   datacenter: '',
   userId: '',
@@ -16,6 +18,8 @@ const state = {
 }
 
 const getters = {
+  // customer name
+  username: state => state.username,
   // dCloud session ID
   sessionId: state => state.sessionId,
   // dCloud datacenter
@@ -73,7 +77,8 @@ const getters = {
     return state.datacenter.length === 3 &&
       state.sessionId.length > 0 &&
       state.userId.length === 4 &&
-      state.phone.length >= 4
+      state.phone.length >= 4 &&
+      state.username.length > 2
   }
 }
 
@@ -89,6 +94,9 @@ const mutations = {
   },
   [types.SET_PHONE] (state, data) {
     state.phone = data
+  },
+  [types.SET_USERNAME] (state, data) {
+    state.username = data
   },
   [types.SET_SESSION_INFO] (state, data) {
     state.sessionInfo = data
@@ -112,6 +120,86 @@ const mutations = {
 }
 
 const actions = {
+  async uploadPhoto ({dispatch, getters}, photo) {
+    // add photo as form data to make a multipart/form-data request
+    const body = new FormData()
+    body.append('file', photo)
+    body.append('ani', getters.phone)
+    const url = getters.endpoints.photo
+    console.log('fetch', url)
+    const response = await dispatch('fetch', {
+      url,
+      group: 'dcloud',
+      type: 'photo',
+      options: {
+        method: 'POST',
+        body
+      }
+    })
+    if (response instanceof Error) {
+      // error
+      console.log('error uploading photo', response.message)
+      throw response
+    } else {
+      // success
+      console.log('successfully uploaded photo')
+    }
+  },
+  async uploadAnswers ({dispatch, getters}, data) {
+    const body = {
+      dataCenter: getters.datacenter,
+      sessionId: getters.sessionId,
+      os: 'web',
+      company: '',
+      userName: getters.username,
+      emailAddress: '',
+      phoneNumber: getters.phone,
+      podId: getters.userId,
+      verticalOwner: getters.verticalConfig.owner || '',
+      verticalName: getters.verticalConfig.name,
+      verticalId: getters.verticalConfig.id,
+      verticalOption: {
+        name: data.caption,
+        index: data.index
+      },
+      gpsLatitude: data.latitude,
+      gpsLongitude: data.longitude,
+      verticalOptions: []
+    }
+    // build vertical options array
+    for (const x of data.verticalOptions) {
+      const questionQuestions = []
+      for (const y of x.fields) {
+        questionQuestions.push({
+          questionLabel: y.name,
+          questionAnswer: y.value
+        })
+      }
+      body.verticalOptions.push({
+        questionLabel: x.caption,
+        questionQuestions
+      })
+    }
+    // console.log('uploadAnswers', body)
+    const url = getters.endpoints.answers
+    const response = await dispatch('fetch', {
+      url,
+      group: 'dcloud',
+      type: 'answers',
+      options: {
+        method: 'POST',
+        body
+      }
+    })
+    if (response instanceof Error) {
+      // error
+      console.log('error uploading answers', response.message)
+      throw response
+    } else {
+      // success
+      console.log('successfully uploaded answers')
+    }
+  },
   setUserId ({commit}, data = '') {
     commit(types.SET_USER_ID, data)
     setUrlQueryParameter('userId', data)
@@ -119,6 +207,10 @@ const actions = {
   setPhone ({commit}, data = '') {
     commit(types.SET_PHONE, data)
     setUrlQueryParameter('phone', data)
+  },
+  setUsername ({commit}, data = '') {
+    commit(types.SET_USERNAME, data)
+    setUrlQueryParameter('username', data)
   },
   setSessionId ({commit}, data = '') {
     commit(types.SET_SESSION_ID, data)
