@@ -133,8 +133,8 @@ html, body {
   background-size: cover;
   background-attachment: fixed;
   background-repeat: no-repeat;
-  /* overflow: hidden !important; */
-  position: fixed !important;
+  overflow: hidden !important;
+  /* position: fixed !important; */
 }
 
 a {
