@@ -109,6 +109,18 @@ export default {
     }
   },
 
+  computed: {
+    ...mapGetters([
+      'hasSessionInput'
+    ]),
+    isValid () {
+      return this.model.datacenter.length === 3 &&
+      this.model.sessionId.length > 0 &&
+      this.model.userId.length === 4 &&
+      this.model.phone.length >= 4
+    }
+  },
+
   watch: {
     // watch all props and refresh if any change
     datacenter () {
@@ -145,18 +157,6 @@ export default {
         userId: this.userId || '',
         phone: this.phone || ''
       }
-    }
-  },
-
-  computed: {
-    ...mapGetters([
-      'hasSessionInput'
-    ]),
-    isValid () {
-      return this.model.datacenter.length === 3 &&
-      this.model.sessionId.length > 0 &&
-      this.model.userId.length === 4 &&
-      this.model.phone.length >= 4
     }
   }
 }
