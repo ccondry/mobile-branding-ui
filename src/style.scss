@@ -3,18 +3,10 @@ $modal-background-background-color: rgba(0, 0, 0, 0.45);
 
 // import bulma source
 @import "~bulma";
+// import buefy dist
 @import '~buefy/dist/buefy.css';
 
-// increase box-shadow on modals and boxes
-.modal-card {
-  box-shadow: 0 2rem 1rem rgba(0,0,0,.2);
-}
-
-// import material design icons
-// @import "~@mdi/font/scss/materialdesignicons.scss";
-
 // import fontawesome icons
-// import '../node_modules/@fortawesome/fontawesome-free/js/all.js'
 $fa-font-path: "~font-awesome/fonts";
 @import "~font-awesome/scss/font-awesome.scss";
 
