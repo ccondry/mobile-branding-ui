@@ -13,11 +13,11 @@
           {{ verticalConfig.mobileTitle }}
         </p>
         <div id="content">
-          <a
+          <router-link
           v-for="(option, index) of verticalConfig.mobileOptions"
           :key="index"
           class="content-item"
-          @click="clickOption(index)"
+          :to="{name: 'Option', params: {index}}"
           >
             <b-icon
             :icon="option.icon"
@@ -25,7 +25,7 @@
             style="font-size: 5rem; padding-bottom: 2rem;"
             />
             {{ option.caption }}
-          </a>
+          </router-link>
         </div>
       </div>
     </div>
@@ -68,20 +68,6 @@ export default {
 </script>
 
 <style>
-/* // each route content container class - centered */
-section.main {
-  /* // flex layout */
-  display: flex;
-  height: 100vh;
-  justify-content: center;
-  /* // center panels horizontally */
-  align-items: center;
-  /* // put content in a column down the page */
-  flex-direction: column;
-  /* enable full screen access on mobile */
-  overflow: scroll;
-}
-
 #background {
   background-position: center;
   background-size: cover;

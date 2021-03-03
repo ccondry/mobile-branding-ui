@@ -1,4 +1,5 @@
 import home from '../views/home'
+import option from '../views/option'
 
 const path = ''
 
@@ -10,6 +11,10 @@ export default [{
     description: 'Home'
   },
   component: home
+}, {
+  name: 'Option',
+  path: path + '/option/:index',
+  component: option
 }, {
   path: '*',
   redirect: path + '/'

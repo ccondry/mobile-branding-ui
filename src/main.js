@@ -36,6 +36,18 @@ Vue.component('Panel', panel)
 // load clipboard copy button component globally
 Vue.component('Copy', copy)
 
+function hasQueryParams (route) {
+  return !!Object.keys(route.query).length
+}
+// copy URL query parameters between routes
+router.beforeEach((to, from, next) => {
+  if (!hasQueryParams(to) && hasQueryParams(from)) {
+    next(Object.assign({}, to, {query: from.query}))
+  } else {
+    next()
+  }
+})
+
 new Vue({
   render: h => h(app),
   store,

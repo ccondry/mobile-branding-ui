@@ -139,5 +139,21 @@ a {
 a:hover {
   color: white !important;
 }
+
+/* // each route content container class - centered */
+section.main {
+  /* // flex layout */
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  justify-content: flex-start;
+  /* // center panels horizontally */
+  align-items: center;
+  /* // put content in a column down the page */
+  flex-direction: column;
+  /* enable full screen access on mobile */
+  overflow: scroll;
+}
+
 </style>
 
