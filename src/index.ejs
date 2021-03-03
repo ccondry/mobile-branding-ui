@@ -5,21 +5,23 @@
   <% if (htmlWebpackPlugin.options.environment === 'development') { %>
   <script src="http://localhost:8098"></script>
   <% } %>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"> -->
+  <!-- <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="dCloud Contact Center">
+  <meta name="apple-mobile-web-app-title" content="dCloud Contact Center"> -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta charset="utf-8"/>
   <title>dCloud Contact Center</title>
 </head>
-<body onload="setTimeout(function() { window.scrollTo(0, 1) }, 100);">
+<!-- <body onload="setTimeout(function() { window.scrollTo(0, 1) }, 100);"> -->
+<body>
   <div id="app"></div>
 </body>
 <script>
-if (window.navigator.standalone) {
-  document.querySelector('meta[name=viewport]').setAttribute('content', 'width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no');
-}
+// if (window.navigator.standalone) {
+//   document.querySelector('meta[name=viewport]').setAttribute('content', 'width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no');
+// }
 </script>
 </html>
