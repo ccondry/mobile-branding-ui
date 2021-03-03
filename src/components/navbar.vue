@@ -2,7 +2,7 @@
   <b-navbar
   :transparent="true"
   :fixed-top="true"
-  style="background-color: rgba(0, 0, 0, 0)"
+  style="background-color: rgba(0, 0, 0, 0); pointer-events: none;"
   >
     <template slot="end">
       <div class="navbar-item">
@@ -12,6 +12,7 @@
           type="is-info"
           rounded
           aria-label="Log Out"
+          style="pointer-events: initial;"
           @click="clickLogout"
           >
             Log Out
