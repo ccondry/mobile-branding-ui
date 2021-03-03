@@ -64,12 +64,18 @@ export default {
       },
       set (value) {
         if (this.isText || this.isNumber) {
-          this.model = value
+          this.$emit('input', {
+            ...this.value,
+            value
+          })
         }
         if (this.isDate) {
           // this.model = value.get
           // request a weekday along with a long date
-          this.$emit(new Intl.DateTimeFormat('en-US', this.formatOptions).format(value))
+          this.$emit('input', {
+            ...this.value,
+            value: new Intl.DateTimeFormat('en-US', this.formatOptions).format(value)
+          })
         }
       }
     }

@@ -167,7 +167,7 @@ const actions = {
     }
     // build vertical options array
     for (let x = 0; x < data.verticalOptions.length; x++) {
-      const questionQuestions = []
+      const optionQuestions = []
       let fields
       // is this the set of questions answered by the user?
       if (x === data.index) {
@@ -179,15 +179,15 @@ const actions = {
       }
       // build set of question/answer data
       for (const field of fields) {
-        questionQuestions.push({
+        optionQuestions.push({
           questionLabel: field.name,
           questionAnswer: field.value
         })
       }
       // push question/answer data into verticalOptions property
       body.verticalOptions.push({
-        questionLabel: x.caption,
-        questionQuestions
+        questionLabel: data.verticalOptions[x].caption,
+        optionQuestions
       })
     }
     // console.log('uploadAnswers', body)
