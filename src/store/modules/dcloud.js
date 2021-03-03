@@ -1,7 +1,6 @@
 import * as types from '../mutation-types'
 import { Toast } from 'buefy/dist/components/toast'
 import Vue from 'vue'
-import router from '../../router'
 import { setUrlQueryParameter } from '../../utils'
 
 const state = {
