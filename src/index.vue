@@ -6,8 +6,8 @@
     class="container is-fluid is-marginless app-content"
     >
       <section class="main">
-        <!-- links list -->
-        <links />
+        <!-- agents -->
+        <agents v-if="isLoggedIn" />
 
         <!-- Copyright and version footer -->
         <app-footer />
@@ -17,13 +17,51 @@
 </template>
 
 <script>
-import Links from './components/links'
+import { mapActions, mapGetters } from 'vuex'
+import Agents from './components/agents'
 import AppFooter from './components/app-footer'
 
 export default {
   components: {
-    Links,
+    Agents,
     AppFooter
+  },
+
+  computed: {
+    ...mapGetters([
+      'user',
+      'isLoggedIn'
+    ])
+  },
+
+  mounted () {
+    this.checkUserId()
+  },
+
+  methods: {
+    ...mapActions([
+      'setUser'
+    ]),
+    checkUserId () {
+      if (!this.isLoggedIn) {
+        // get user ID
+        this.$buefy.dialog.prompt({
+          message: 'What is your 4-digit user ID?',
+          rounded: true,
+          confirmText: 'Submit',
+          type: 'is-primary',
+          canCancel: false,
+          inputAttrs: {
+            value: this.user.id,
+            required: true,
+            pattern: '[0-9]{4}'
+          },
+          onConfirm: (id) => {
+            this.setUser({id})
+          }
+        })
+      }
+    }
   }
 }
 </script>
