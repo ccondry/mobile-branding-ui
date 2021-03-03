@@ -41,6 +41,7 @@
         v-model="model.sessionId"
         placeholder="123456"
         required
+        type="number"
         pattern="[0-9]*"
         :autofocus="model.phone.length >= 4 && model.userId.length !== 4"
         @keyup.enter.native="submit"
@@ -53,6 +54,7 @@
         v-model="model.userId"
         placeholder="1234"
         required
+        type="number"
         pattern="[0-9]{4}"
         :autofocus="model.phone.length >= 4 && model.sessionId.length > 1"
         @keyup.enter.native="submit"
