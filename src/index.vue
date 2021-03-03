@@ -43,6 +43,15 @@ export default {
     ])
   },
 
+  watch: {
+    isLoggedIn (val, oldVal) {
+      if (oldVal && !val) {
+        // user just logged out
+        this.checkUserId()
+      }
+    }
+  },
+
   mounted () {
     this.checkUserId()
   },
@@ -69,15 +78,6 @@ export default {
             this.setUser({id})
           }
         })
-      }
-    }
-  },
-
-  watch: {
-    isLoggedIn (val, oldVal) {
-      if (oldVal && !val) {
-        // user just logged out
-        this.checkUserId()
       }
     }
   }
