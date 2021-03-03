@@ -7,6 +7,11 @@
     :style="`background-image: url(${verticalConfig.mobileWallpaper})`"
     >
       <div id="overlay">
+        <p
+        style="font-size: 1rem; display: flex; justify-content: space-around;"
+        >
+          {{ verticalConfig.mobileTitle }}
+        </p>
         <div id="content">
           <a
           v-for="(option, index) of verticalConfig.mobileOptions"
@@ -17,7 +22,7 @@
             <b-icon
             :icon="option.icon"
             pack="fa"
-            size="is-large"
+            style="font-size: 5rem; padding-bottom: 2rem;"
             />
             {{ option.caption }}
           </a>
@@ -112,11 +117,12 @@ section.main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 2rem;
+  font-size: 1.5rem;
   /* padding-top: 2rem; */
   justify-content: space-evenly;
-  height: 100%
+  height: 100%;
   /* align-content: space-between; */
+  margin-top: -2rem;
 }
 
 .content-item {
