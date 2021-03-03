@@ -8,6 +8,9 @@
     class="container is-fluid is-marginless app-content"
     >
       <section class="main">
+        <!-- demo website -->
+        <demo-website v-if="isLoggedIn" />
+
         <!-- agents -->
         <agents v-if="isLoggedIn" />
 
@@ -22,12 +25,14 @@
 import { mapActions, mapGetters } from 'vuex'
 import Agents from './components/agents'
 import AppFooter from './components/app-footer'
+import DemoWebsite from './components/demo-website'
 import Navbar from './components/navbar'
 
 export default {
   components: {
     Agents,
     AppFooter,
+    DemoWebsite,
     Navbar
   },
 
