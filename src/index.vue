@@ -133,7 +133,7 @@ html, body {
   background-size: cover;
   background-attachment: fixed;
   background-repeat: no-repeat;
-  overflow: hidden !important;
+  /* overflow: hidden !important; */
   /* position: fixed !important; */
 }
 
@@ -157,7 +157,7 @@ section.main {
   /* // put content in a column down the page */
   flex-direction: column;
   /* enable full screen access on mobile */
-  overflow: scroll;
+  /* overflow: scroll; */
 }
 
 </style>
