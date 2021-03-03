@@ -24,6 +24,9 @@ const getters = {
 const actions = {
   setUser ({commit}, user) {
     commit(types.SET_USER, user)
+  },
+  logout ({commit}) {
+    commit(types.SET_USER, {})
   }
 }
 

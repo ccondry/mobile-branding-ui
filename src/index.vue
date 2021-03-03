@@ -1,5 +1,7 @@
 <template>
   <div>
+    <!-- top navbar -->
+    <navbar />
     <!-- main -->
     <div
     id="main-container"
@@ -20,11 +22,13 @@
 import { mapActions, mapGetters } from 'vuex'
 import Agents from './components/agents'
 import AppFooter from './components/app-footer'
+import Navbar from './components/navbar'
 
 export default {
   components: {
     Agents,
-    AppFooter
+    AppFooter,
+    Navbar
   },
 
   computed: {
@@ -60,6 +64,15 @@ export default {
             this.setUser({id})
           }
         })
+      }
+    }
+  },
+
+  watch: {
+    isLoggedIn (val, oldVal) {
+      if (oldVal && !val) {
+        // user just logged out
+        this.checkUserId()
       }
     }
   }
