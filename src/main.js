@@ -4,8 +4,10 @@ import store from './store'
 // common panel component
 import panel from './components/panel'
 import copy from './components/copy'
+import router from './router'
 import './style.scss'
 
+// Vue.router = router
 // use 'buefy/src' when running from git,
 import Buefy from 'buefy/src'
 // or use 'buefy' when running from npm
@@ -36,5 +38,6 @@ Vue.component('Copy', copy)
 
 new Vue({
   render: h => h(app),
-  store
+  store,
+  router
 }).$mount('#app')
