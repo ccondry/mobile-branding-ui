@@ -8,7 +8,7 @@
     >
       <div id="overlay">
         <p
-        style="font-size: 1rem; display: flex; justify-content: space-around;"
+        style="font-size: 1rem; display: flex; justify-content: space-around; color: white;"
         >
           {{ verticalConfig.mobileTitle }}
         </p>
