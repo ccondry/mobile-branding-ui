@@ -166,14 +166,25 @@ const actions = {
       verticalOptions: []
     }
     // build vertical options array
-    for (const x of data.verticalOptions) {
+    for (let x = 0; x < data.verticalOptions.length; x++) {
       const questionQuestions = []
-      for (const y of x.fields) {
+      let fields
+      // is this the set of questions answered by the user?
+      if (x === data.index) {
+        // user answer data
+        fields = data.fields
+      } else {
+        // this is just default data...
+        fields = data.verticalOptions[x].fields
+      }
+      // build set of question/answer data
+      for (const field of fields) {
         questionQuestions.push({
-          questionLabel: y.name,
-          questionAnswer: y.value
+          questionLabel: field.name,
+          questionAnswer: field.value
         })
       }
+      // push question/answer data into verticalOptions property
       body.verticalOptions.push({
         questionLabel: x.caption,
         questionQuestions
