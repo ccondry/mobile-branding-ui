@@ -9,7 +9,7 @@ const actions = {
     options = {},
     mutation,
     message,
-    showNotification = true
+    showNotification = false
   }) {
     if (!url) {
       throw Error('url is a required parameter for fetch')

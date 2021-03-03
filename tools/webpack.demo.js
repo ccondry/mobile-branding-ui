@@ -36,7 +36,7 @@ const webpackConfig = {
     // overlay: true,
     host: 'localhost',
     port: 5014,
-    openPage: '/',
+    openPage: '',
     hot: true,
     // historyApiFallback: {
     //   index: '/'

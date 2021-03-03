@@ -116,6 +116,13 @@ export const csvStringToArray = data => {
   return result
 }
 
+// set a URL query parameter on the current browser URL
+export const setUrlQueryParameter = (name, value) => {
+  const params = new window.URLSearchParams(window.location.search)
+  params.set(name, value)
+  window.history.replaceState({}, '', decodeURIComponent(`${window.location.pathname}?${params}`))
+}
+
 // export default {
 //   csvStringToArray,
 //   fetch,
