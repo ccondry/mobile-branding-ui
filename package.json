@@ -1,5 +1,5 @@
 {
-  "name": "cloud-config-toolbox-ui",
+  "name": "webex-links-homepage",
   "description": "UI for the dCloud Cloud Configuration Toolbox",
   "version": "2021.2.25-1",
   "author": "Coty Condry <ccondry@cisco.com>",
@@ -26,13 +26,13 @@
     "cjp",
     "toolbox"
   ],
-  "homepage": "https://dcloud-collab-toolbox-rtp.cisco.com",
+  "homepage": "https://dcloud.cisco.com",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ccondry/cloud-config-toolbox-ui"
+    "url": "https://github.com/ccondry/webex-links-homepage"
   },
   "bugs": {
-    "url": "https://github.com/ccondry/cloud-config-toolbox-ui/issues"
+    "url": "https://github.com/ccondry/webex-links-homepage/issues"
   },
   "license": "MIT",
   "dependencies": {
