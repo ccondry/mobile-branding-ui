@@ -1,5 +1,5 @@
 {
-  "name": "webex-links-homepage",
+  "name": "mobile-branding-ui",
   "description": "UI for the dCloud Cloud Configuration Toolbox",
   "version": "2021.3.3-1",
   "author": "Coty Condry <ccondry@cisco.com>",
@@ -29,10 +29,10 @@
   "homepage": "https://dcloud.cisco.com",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ccondry/webex-links-homepage"
+    "url": "https://github.com/ccondry/mobile-branding-ui"
   },
   "bugs": {
-    "url": "https://github.com/ccondry/webex-links-homepage/issues"
+    "url": "https://github.com/ccondry/mobile-branding-ui/issues"
   },
   "license": "MIT",
   "dependencies": {

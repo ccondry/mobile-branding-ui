@@ -24,13 +24,13 @@ else
       yarn build
       if [ $? -eq 0 ]; then
         echo "yarn build successful. removing old www files..."
-        rm -rf /var/www/html/static/webex/v4prod/*
+        rm -rf /var/www/html/mobile-brand/*
         echo "copying dist files to www folder..."
-        cp -rf dist/* /var/www/html/static/webex/v4prod/
+        cp -rf dist/* /var/www/html/mobile-brand/
         if [ $? -eq 0 ]; then
-          echo "successfully installed webex-links-homepage website files"
+          echo "successfully installed mobile-branding-ui website files"
         else
-          echo "failed to install webex-links-homepage website files"
+          echo "failed to install mobile-branding-ui website files"
         fi
       else
         echo "yarn build failed. help me."

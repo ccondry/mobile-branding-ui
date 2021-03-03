@@ -1,8 +1,8 @@
 #!/bin/sh
-echo "removing webex-links-homepage website files..."
-rm -rf /var/www/html/static/webex/v4prod
+echo "removing mobile-branding-ui website files..."
+rm -rf /var/www/html/mobile-brand
 if [ $? -eq 0 ]; then
-  echo "successfully removed webex-links-homepage website files."
+  echo "successfully removed mobile-branding-ui website files."
 else
-  echo "failed to remove webex-links-homepage website files."
+  echo "failed to remove mobile-branding-ui website files."
 fi
