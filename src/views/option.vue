@@ -1,5 +1,6 @@
 <template>
   <section v-if="mobileOption" class="main">
+    <b-loading :active="isWorking" :is-full-page="true" />
     <!-- title -->
     <h1 class="title">
       {{ mobileOption.caption }}
@@ -107,7 +108,8 @@ export default {
     ...mapGetters([
       'verticalConfig',
       'sessionInfo',
-      'userId'
+      'userId',
+      'working'
     ]),
     answersData () {
       return {
@@ -117,6 +119,9 @@ export default {
         longitude: this.longitude,
         verticalOptions: this.verticalConfig.mobileOptions
       }
+    },
+    isWorking () {
+      return this.working.dcloud.photo || this.working.dcloud.answers
     }
   },
 
