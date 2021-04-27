@@ -42,11 +42,11 @@ export default {
       'loading'
     ]),
     isLoading () {
-      return true
-      // return this.loading.dcloud.sessionInfo ||
-      // this.loading.dcloud.brand ||
-      // this.loading.dcloud.demo ||
-      // this.loading.dcloud.multichannel
+      // return true
+      return this.loading.dcloud.sessionInfo ||
+      this.loading.dcloud.brand ||
+      this.loading.dcloud.demo ||
+      this.loading.dcloud.multichannel
     }
   },
 
