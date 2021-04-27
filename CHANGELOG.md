@@ -3,6 +3,13 @@
 Version numbers are semver-compatible dates in YYYY.MM.DD-X format,
 where X is the revision number
 
+# 2021.4.27
+
+### Features
+* **Site:** Allow setting datacenter to "webex" and session ID to "v4prod", and
+automatically submit the form if the page loads with all fields filled.
+
+
 # 2021.3.3-4
 
 ### Features
