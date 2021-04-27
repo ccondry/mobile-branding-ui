@@ -308,7 +308,7 @@ const actions = {
     // default to ECE multichannel
     const multichannel = getters.sessionConfig.multichannel || 'ece'
     return dispatch('fetch', {
-      group: 'admin',
+      group: 'dcloud',
       type: 'multichannel',
       url: getters.endpoints.multichannel + '/' + multichannel,
       message: 'get multichannel options',
