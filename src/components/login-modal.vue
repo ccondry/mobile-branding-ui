@@ -30,6 +30,9 @@
         placeholder="New Name"
         required
         >
+          <option value="webex">
+            Webex
+          </option>
           <option value="RTP">
             US East
           </option>
@@ -46,8 +49,31 @@
         </b-select>
       </b-field>
 
+      <!-- webex demo -->
+      <b-field
+      v-if="model.datacenter === 'webex'"
+      label="Demo"
+      >
+        <b-select
+        v-model="model.sessionId"
+        required
+        @keyup.enter.native="submit"
+        >
+          <option
+          v-for="version of webexVersions"
+          :key="version.value"
+          :value="version.value"
+          >
+            {{ version.name }}
+          </option>
+        </b-select>
+      </b-field>
+
       <!-- session ID -->
-      <b-field label="Session ID">
+      <b-field
+      v-if="model.datacenter !== 'webex'"
+      label="Session ID"
+      >
         <b-input
         v-model="model.sessionId"
         placeholder="123456"
@@ -123,7 +149,11 @@ export default {
         userId: '',
         phone: '',
         username: ''
-      }
+      },
+      webexVersions: [{
+        name: 'v4',
+        value: 'v4prod'
+      }]
     }
   },
 
@@ -132,11 +162,14 @@ export default {
       'hasSessionInput'
     ]),
     isValid () {
-      return this.model.datacenter.length === 3 &&
+      return this.model.datacenter.length >= 3 &&
       this.model.sessionId.length > 0 &&
       this.model.userId.length === 4 &&
       this.model.phone.length >= 4 &&
       this.model.username.length > 2
+    },
+    modelDatacenter () {
+      return this.model.datacenter
     }
   },
 
@@ -156,12 +189,34 @@ export default {
     },
     username () {
       this.refresh()
+    },
+    modelDatacenter () {
+      // if datacenter is set to webex and sessionId is not a valid webex
+      // demo version, set the sessionId to the first webex demo version
+      if (
+        this.model.datacenter === 'webex' &&
+        !this.webexVersions.find(v => v.value === this.model.sessionId)
+      ) {
+        this.model.sessionId = this.webexVersions[0].value
+        return
+      }
+      // if datacenter is set to not webex and sessionId is a webex version,
+      // set the sessionId field blank
+      if (
+        this.model.datacenter !== 'webex' &&
+        this.webexVersions.find(v => v.value === this.model.sessionId)
+      ) {
+        this.model.sessionId = ''
+        return
+      }
     }
   },
 
   mounted () {
     // refresh model data with props data
     this.refresh()
+    // submit now if all fields are valid
+    this.submit()
   },
 
   methods: {
