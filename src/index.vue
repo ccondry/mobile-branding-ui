@@ -8,6 +8,7 @@
     appear
     >
       <keep-alive>
+        <b-loading :active="isLoading" />
         <router-view />
       </keep-alive>
     </transition>
@@ -37,8 +38,16 @@ export default {
       'phone',
       'username',
       'verticalConfig',
-      'hasSessionInput'
-    ])
+      'hasSessionInput',
+      'loading'
+    ]),
+    isLoading () {
+      return true
+      // return this.loading.dcloud.sessionInfo ||
+      // this.loading.dcloud.brand ||
+      // this.loading.dcloud.demo ||
+      // this.loading.dcloud.multichannel
+    }
   },
 
   watch: {
