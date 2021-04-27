@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-loading :active="hasSessionInput && !verticalConfig" />
+    <b-loading :active="isLoading" />
     <transition
     mode="out-in"
     enter-active-class="fadeIn"
@@ -8,7 +8,6 @@
     appear
     >
       <keep-alive>
-        <b-loading :active="isLoading" />
         <router-view />
       </keep-alive>
     </transition>
