@@ -33,7 +33,6 @@ export default {
 
   data () {
     return {
-      model: '',
       formatOptions: {
         year: 'numeric',
         month: 'short',
@@ -55,10 +54,10 @@ export default {
     vmodel: {
       get () {
         if (this.isText || this.isNumber) {
-          return this.model
+          return this.value.value
         }
         if (this.isDate) {
-          return new Date(this.model)
+          return new Date(this.value.value)
         }
         return ''
       },
@@ -70,27 +69,14 @@ export default {
           })
         }
         if (this.isDate) {
-          // this.model = value.get
           // request a weekday along with a long date
           this.$emit('input', {
             ...this.value,
-            value: new Intl.DateTimeFormat('en-US', this.formatOptions).format(value)
+            value: this.dateFormatter(value)
           })
         }
       }
     }
-  },
-
-  watch: {
-    option () {
-      // update model cache from changed prop data
-      this.model = this.value.value
-    }
-  },
-
-  mounted () {
-    // copy prop to model
-    this.model = this.value.value
   },
 
   methods: {
