@@ -172,10 +172,10 @@ const actions = {
       // is this the set of questions answered by the user?
       if (x === data.index) {
         // user answer data
-        fields = data.fields
+        fields = JSON.parse(JSON.stringify(data.fields))
       } else {
         // this is just default data...
-        fields = data.verticalOptions[x].fields
+        fields = JSON.parse(JSON.stringify(data.verticalOptions[x].fields))
       }
       // build set of question/answer data
       for (const field of fields) {
