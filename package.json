@@ -1,7 +1,7 @@
 {
   "name": "mobile-branding-ui",
   "description": "UI for the dCloud Cloud Configuration Toolbox",
-  "version": "2021.4.28",
+  "version": "2022.2.25",
   "author": "Coty Condry <ccondry@cisco.com>",
   "main": "dist/js/index.common.js",
   "unpkg": "dist/js/index.js",
