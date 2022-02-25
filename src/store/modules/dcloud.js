@@ -50,13 +50,13 @@ const getters = {
   // null if no errors, object if errors getting dCloud session info
   sessionInfoError: state => state.sessionInfoError,
   // is this Webex CC v4 Production (Abilene) demo?
-  isWebexV4Prod: (state, getters) => {
-    try {
-      return getters.sessionInfo.demo.toLowerCase() === 'webex' && state.sessionInfo.version.toLowerCase() === 'v4prod'
-    } catch (e) {
-      return false
-    }
-  },
+  // isWebexV4Prod: (state, getters) => {
+  //   try {
+  //     return getters.sessionInfo.demo.toLowerCase() === 'webex' && state.sessionInfo.version.toLowerCase() === 'v4prod'
+  //   } catch (e) {
+  //     return false
+  //   }
+  // },
   dids: (state, getters) => {
     try {
       return getters.sessionInfo.dids
