@@ -153,6 +153,9 @@ export default {
       webexVersions: [{
         name: 'v4',
         value: 'v4prod'
+      }, {
+        name: 'v6',
+        value: 'v6'
       }]
     }
   },
